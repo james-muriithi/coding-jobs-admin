@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTwitterUserJobRequest;
+use App\Http\Resources\Admin\JobResource;
 use App\Http\Resources\Admin\TwitterUserJobResource;
 use App\Http\Resources\Admin\TwitterUserResource;
+use App\Models\Job;
+use App\Models\TwitterUser;
 use App\Models\TwitterUserJob;
+use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,5 +49,21 @@ class TwitterUserJobApiController extends Controller
         $twitterUserJob->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function new($user_id)
+    {
+        $twitterUser = TwitterUser::find($user_id);
+        if(!$twitterUser){
+            $twitterUser = TwitterUser::where('user_id_str', '=',$user_id)->firstOrFail();
+            $user_id = $twitterUser->id;
+        }
+        $twitterUserJobs = TwitterUserJob::where('user_id', $user_id)->pluck('job_id');
+
+        $newUserJobs = Job::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->whereNotIn('id', $twitterUserJobs)
+            ->get();
+
+        return new JobResource($newUserJobs);
     }
 }

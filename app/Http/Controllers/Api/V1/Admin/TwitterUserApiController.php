@@ -60,4 +60,9 @@ class TwitterUserApiController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function preferences($preference)
+    {
+        return new TwitterUserResource(TwitterUser::where('preference', '=', $preference)->get());
+    }
 }
