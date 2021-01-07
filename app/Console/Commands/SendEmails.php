@@ -42,6 +42,7 @@ class SendEmails extends Command
     {
         $emailSubscribedUsers = TwitterUser::where('subscribed', '=', 1)
             ->where('preference', '=', 'email')
+            ->whereNotNull('email')
             ->get();
         foreach ($emailSubscribedUsers as $emailSubscribedUser) {
             $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);

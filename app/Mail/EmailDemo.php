@@ -12,15 +12,17 @@ class EmailDemo extends Mailable
     use Queueable, SerializesModels;
 
     protected $mailData;
+    protected $subject;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct($mailData, $subject = "New Coding Jobs")
     {
         $this->mailData = $mailData;
+        $this->subject = $subject;
     }
 
     /**
@@ -30,7 +32,8 @@ class EmailDemo extends Mailable
      */
     public function build()
     {
-        return $this->view('Email.jobs')
+        return $this->subject($this->subject)
+            ->view('Email.jobs')
             ->with('jobs', $this->mailData);
     }
 }
