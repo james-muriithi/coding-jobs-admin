@@ -9,14 +9,14 @@ use \DateTimeInterface;
 
 class Job extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     public $table = 'jobs';
 
+    public $timestamps = false;
+
     protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'created_at'
     ];
 
     protected $fillable = [

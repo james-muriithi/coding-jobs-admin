@@ -47,6 +47,14 @@
                             {{ $postedJob->link }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.postedJob.fields.post_date') }}
+                        </th>
+                        <td>
+                            {{ $postedJob->post_date ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

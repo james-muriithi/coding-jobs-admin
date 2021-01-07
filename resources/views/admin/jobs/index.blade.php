@@ -47,9 +47,6 @@
                             {{ trans('cruds.job.fields.link') }}
                         </th>
                         <th>
-                            {{ trans('cruds.job.fields.full_text') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.job.fields.twitter') }}
                         </th>
                         <th>
@@ -86,9 +83,6 @@
                             </td>
                             <td>
                                 {{ $job->link ?? '' }}
-                            </td>
-                            <td>
-                                {{ $job->full_text ?? '' }}
                             </td>
                             <td>
                                 {{ $job->twitter ?? '' }}
@@ -172,7 +166,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

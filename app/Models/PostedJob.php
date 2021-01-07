@@ -10,21 +10,18 @@ class PostedJob extends Model
 {
     use HasFactory;
 
-    public $table = 'posted_jobs';
+    public $table = 'posted';
+
+    public $timestamps = false;
 
     protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'post_date'
     ];
 
     protected $fillable = [
         'job_id',
         'platform',
-        'link',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'link'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

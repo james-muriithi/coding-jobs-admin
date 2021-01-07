@@ -35,6 +35,9 @@
                             {{ trans('cruds.postedJob.fields.link') }}
                         </th>
                         <th>
+                            {{ trans('cruds.postedJob.fields.post_date') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +59,9 @@
                             </td>
                             <td>
                                 {{ $postedJob->link ?? '' }}
+                            </td>
+                            <td>
+                                {{ $postedJob->post_date ?? '' }}
                             </td>
                             <td>
                                 @can('posted_job_show')
@@ -84,7 +90,7 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-  
+
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
@@ -95,7 +101,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

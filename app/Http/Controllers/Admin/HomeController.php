@@ -160,11 +160,9 @@ class HomeController
                 'job_title'  => '',
                 'company'    => '',
                 'salary'     => '',
-                'summary'    => '',
                 'link'       => '',
                 'twitter'    => '',
                 'created_at' => '',
-                'updated_at' => '',
             ],
         ];
 
