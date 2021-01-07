@@ -50,6 +50,9 @@
                             {{ trans('cruds.job.fields.twitter') }}
                         </th>
                         <th>
+                            {{ trans('cruds.job.fields.created_at') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -86,6 +89,9 @@
                             </td>
                             <td>
                                 {{ $job->twitter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $job->created_at ?? '' }}
                             </td>
                             <td>
                                 @can('job_show')

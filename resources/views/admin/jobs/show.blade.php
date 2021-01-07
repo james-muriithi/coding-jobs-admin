@@ -103,6 +103,14 @@
                             {{ $job->twitter }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.job.fields.created_at') }}
+                        </th>
+                        <td>
+                            {{ $job->created_at }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
