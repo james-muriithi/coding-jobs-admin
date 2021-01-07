@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\EmailDemo;
+use App\Models\TwitterUser;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class SendEmails extends Command
 {
@@ -11,7 +14,7 @@ class SendEmails extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'email:send';
 
     /**
      * The console command description.
@@ -37,6 +40,16 @@ class SendEmails extends Command
      */
     public function handle()
     {
-        return 0;
+        $emailSubscribedUsers = TwitterUser::where('subscribed', '=', 1)
+            ->where('preference', '=', 'email')
+            ->get();
+        foreach ($emailSubscribedUsers as $emailSubscribedUser) {
+            $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
+            if (count($newJobs) > 0){
+                Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
+            }else{
+                echo 'No new jobs for user '.$emailSubscribedUser['name'].PHP_EOL;
+            }
+        }
     }
 }
