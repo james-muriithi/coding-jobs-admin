@@ -19,25 +19,24 @@ class UpdateTwitterUserRequest extends FormRequest
         return [
             'name'              => [
                 'string',
-                'required',
+                'nullable',
             ],
             'screen_name'       => [
                 'string',
-                'required',
-            ],
-            'user_id_str'       => [
-                'string',
-                'required',
+                'nullable',
             ],
             'phone_number'      => [
                 'string',
+                'regex:/^(0|\+?254)(\d){9}$/',
                 'nullable',
+            ],
+            'email'             => [
+                'nullable',
+                'email',
             ],
             'subscribed'        => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'preference'        => [
                 'string',

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'coding-jobs',
+    'site_title' => 'Coding Jobs',
 ];

@@ -29,15 +29,18 @@ class StoreTwitterUserRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'email'             => [
+                'optional',
+                'email'
+            ],
             'phone_number'      => [
                 'string',
                 'nullable',
+                'regex:/^(0|\+?254)(\d){9}$/',
             ],
             'subscribed'        => [
                 'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'integer'
             ],
             'preference'        => [
                 'string',
@@ -45,7 +48,7 @@ class StoreTwitterUserRequest extends FormRequest
             ],
             'profile_image_url' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

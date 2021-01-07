@@ -22,7 +22,10 @@ class TwitterUserApiController extends Controller
 
     public function store(StoreTwitterUserRequest $request)
     {
-        $twitterUser = TwitterUser::create($request->all());
+        $twitterUser = TwitterUser::updateOrCreate(
+            ['user_id_str' => $request->get('user_id_str')],
+            $request->except('user_id_str'),
+        );
 
         return (new TwitterUserResource($twitterUser))
             ->response()
@@ -36,8 +39,12 @@ class TwitterUserApiController extends Controller
         return new TwitterUserResource($twitterUser);
     }
 
-    public function update(UpdateTwitterUserRequest $request, TwitterUser $twitterUser)
+    public function update(UpdateTwitterUserRequest $request, $user_id)
     {
+        $twitterUser = TwitterUser::find($user_id);
+        if (!$twitterUser){
+            $twitterUser = TwitterUser::where('user_id_str', '=',$user_id)->firstOrFail();
+        }
         $twitterUser->update($request->all());
 
         return (new TwitterUserResource($twitterUser))

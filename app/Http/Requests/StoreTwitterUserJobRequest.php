@@ -11,7 +11,7 @@ class StoreTwitterUserJobRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('twitter_user_job_create');
+        return Gate::allows('twitter_user_job_access');
     }
 
     public function rules()
@@ -20,7 +20,13 @@ class StoreTwitterUserJobRequest extends FormRequest
             'job_id' => [
                 'required',
                 'integer',
+                'exists:jobs,id',
             ],
+            'user_id' => [
+                'required',
+                'integer',
+                'exists:twitter_users,id',
+            ]
         ];
     }
 }

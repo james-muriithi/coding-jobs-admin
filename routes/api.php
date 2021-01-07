@@ -17,8 +17,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('posted-jobs', 'PostedJobApiController', ['except' => ['update', 'destroy']]);
 
     // Twitter Users
-    Route::apiResource('twitter-users', 'TwitterUserApiController');
+    Route::apiResource('twitter-users', 'TwitterUserApiController', ['except' => ['destroy']]);
 
     // Twitter User Jobs
-    Route::apiResource('twitter-user-jobs', 'TwitterUserJobApiController', ['except' => ['store', 'update']]);
+    Route::apiResource('twitter-user-jobs', 'TwitterUserJobApiController', ['only' => ['store', 'index', 'show']]);
 });

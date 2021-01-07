@@ -26,6 +26,9 @@
                             {{ trans('cruds.twitterUser.fields.id') }}
                         </th>
                         <th>
+
+                        </th>
+                        <th>
                             {{ trans('cruds.twitterUser.fields.name') }}
                         </th>
                         <th>
@@ -47,7 +50,10 @@
                             {{ trans('cruds.twitterUser.fields.preference') }}
                         </th>
                         <th>
-                            {{ trans('cruds.twitterUser.fields.profile_image_url') }}
+                            {{ trans('cruds.twitterUser.fields.created_at') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.twitterUser.fields.updated_at') }}
                         </th>
                         <th>
                             &nbsp;
@@ -62,6 +68,11 @@
                             </td>
                             <td>
                                 {{ $twitterUser->id ?? '' }}
+                            </td>
+                            <td>
+                                @if($twitterUser->profile_image_url)
+                                    <img src="{{ $twitterUser->profile_image_url ?? '' }}" alt="" class="img-thumbnail rounded-circle">
+                                @endif
                             </td>
                             <td>
                                 {{ $twitterUser->name ?? '' }}
@@ -85,7 +96,10 @@
                                 {{ $twitterUser->preference ?? '' }}
                             </td>
                             <td>
-                                {{ $twitterUser->profile_image_url ?? '' }}
+                                {{ $twitterUser->created_at ?? '' }}
+                            </td>
+                            <td>
+                                {{ $twitterUser->updated_at ?? '' }}
                             </td>
                             <td>
                                 @can('twitter_user_show')
@@ -166,7 +180,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>
