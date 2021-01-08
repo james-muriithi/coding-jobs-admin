@@ -235,7 +235,7 @@
                             <!-- Logo -->
                             <tr>
                                 <td bgcolor="#ffffff" class="p30-15 img-center logo" style="padding: 50px 30px 20px; border-radius: 0px 0px; font-size:0pt; line-height:0pt; text-align:center;width:100%;">
-                                    <a href="" rel="noreferrer noopener" style="color: #17bebb;font-size: 24px;font-weight: 700;font-family: 'Work Sans', sans-serif;">
+                                    <a href="" rel="noreferrer noopener" style="color: #17bebb;font-size: 19px;font-weight: 700;font-family: 'Work Sans', sans-serif;">
                                         <h1>Coding Jobs</h1>
                                     </a>
                                 </td>
@@ -295,7 +295,7 @@
                                                                                                 <tr>
                                                                                                     <td class="h5-black black" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:left; padding-bottom:15px; text-transform:uppercase; font-weight:bold; color:#000000;">
                                                                                                         <multiline>
-                                                                                                            {{$job->title}}
+                                                                                                            {{$job->job_title}}
                                                                                                         </multiline>
                                                                                                     </td>
                                                                                                 </tr>
@@ -304,6 +304,18 @@
                                                                                                         <multiline>
                                                                                                             {{$job->summary}}
                                                                                                         </multiline>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td style="font-family:'Raleway', Arial,sans-serif; font-size:13px; line-height:22px; text-align:left; color:#553D36; padding-top:10px;font-weight: 550;">
+                                                                                                        <multiline>
+                                                                                                            Company: <span style="padding-left: 10px">{{$job->company}}</span>
+                                                                                                        </multiline>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td style="font-family:'Raleway', Arial,sans-serif; font-size:15px; line-height:22px; text-align:left; color:#f9a602; padding-top:10px;font-weight: 550;">
+                                                                                                        {{$job->salary}}
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </table>
@@ -318,7 +330,7 @@
                                                                                                                 <td class="text-button button-blue" style="font-family:'Kreon', Georgia, serif; font-size:14px; line-height:18px; text-align:center; padding:10px 30px; border-radius:20px; background:transparent; color:#1e52bd; border:1px solid #1e52bd;">
                                                                                                                     <multiline>
                                                                                                                         <a rel="noreferrer noopener" href="{{$job->link}}" target="_blank" class="link-blue" style="color:#1e52bd; text-decoration:none;">
-                                                                                                                            <span class="link-blue" style="color:#1e52bd; text-decoration:none;">Visit</span>
+                                                                                                                            <span class="link-blue" style="color:#1e52bd; text-decoration:none;">View <Job></Job></span>
                                                                                                                         </a>
                                                                                                                     </multiline>
                                                                                                                 </td>
