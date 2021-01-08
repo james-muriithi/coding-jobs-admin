@@ -15,7 +15,7 @@ class SendEmails extends Command
      *
      * @var string
      */
-    protected $signature = 'email:send';
+    protected $signature = 'email:send {user?}';
 
     /**
      * The console command description.
@@ -41,11 +41,12 @@ class SendEmails extends Command
      */
     public function handle()
     {
-        $emailSubscribedUsers = TwitterUser::where('subscribed', '=', 1)
-            ->where('preference', '=', 'email')
-            ->whereNotNull('email')
-            ->get();
-        foreach ($emailSubscribedUsers as $emailSubscribedUser) {
+        if (!empty($this->argument('user'))){
+            $emailSubscribedUser = TwitterUser::find($this->argument('user'));
+            if (!$emailSubscribedUser){
+                $emailSubscribedUser = TwitterUser::where('user_id_str', '=',$this->argument('user'))->firstOrFail();
+            }
+
             $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
             if (count($newJobs) > 0){
                 Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
@@ -57,6 +58,25 @@ class SendEmails extends Command
                 }
             }else{
                 echo 'No new jobs for user '.$emailSubscribedUser['name'].PHP_EOL;
+            }
+        }else{
+            $emailSubscribedUsers = TwitterUser::where('subscribed', '=', 1)
+                ->where('preference', '=', 'email')
+                ->whereNotNull('email')
+                ->get();
+            foreach ($emailSubscribedUsers as $emailSubscribedUser) {
+                $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
+                if (count($newJobs) > 0){
+                    Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
+                    foreach ($newJobs as $newJob) {
+                        TwitterUserJob::create([
+                            'user_id' =>  $emailSubscribedUser['id'],
+                            'job_id' => $newJob['id'],
+                        ]);
+                    }
+                }else{
+                    echo 'No new jobs for user '.$emailSubscribedUser['name'].PHP_EOL;
+                }
             }
         }
     }

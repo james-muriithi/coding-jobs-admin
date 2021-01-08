@@ -9,6 +9,7 @@ use App\Http\Resources\Admin\TwitterUserResource;
 use App\Models\TwitterUser;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\HttpFoundation\Response;
 
 class TwitterUserApiController extends Controller
@@ -46,6 +47,12 @@ class TwitterUserApiController extends Controller
             $twitterUser = TwitterUser::where('user_id_str', '=',$user_id)->firstOrFail();
         }
         $twitterUser->update($request->all());
+
+        if ($request->has('preference') &&
+            $request->get('preference') == 'email' &&
+            !empty($twitterUser->email)){
+            Artisan::queue('email:send '.$twitterUser->id);
+        }
 
         return (new TwitterUserResource($twitterUser))
             ->response()
