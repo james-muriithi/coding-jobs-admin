@@ -302,7 +302,7 @@
                                                                                                 <tr>
                                                                                                     <td class="text black" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:22px; text-align:left; color:#000000;">
                                                                                                         <multiline>
-                                                                                                            {{htmlspecialchars_decode(nl2br($job->summary, false))}}
+                                                                                                            {{html_entity_decode(nl2br($job->summary, false))}}
                                                                                                         </multiline>
                                                                                                     </td>
                                                                                                 </tr>
