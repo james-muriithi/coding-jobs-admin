@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('users', 'UsersController');
 
     // Jobs
+    Route::get('/jobs/email', function (){
+        return view('Email.jobs')->with('jobs', \App\Models\Job::all()->take(10));
+    });
     Route::delete('jobs/destroy', 'JobController@massDestroy')->name('jobs.massDestroy');
     Route::resource('jobs', 'JobController');
 

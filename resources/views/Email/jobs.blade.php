@@ -302,7 +302,9 @@
                                                                                                 <tr>
                                                                                                     <td class="text black" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:22px; text-align:left; color:#000000;">
                                                                                                         <multiline>
-                                                                                                            {{html_entity_decode(nl2br($job->summary, false))}}
+                                                                                                            @php($summary = $job->summary)
+                                                                                                            @php($summary = str_replace([":\r\n", ":\r", ":\n"], ': ', $summary))
+                                                                                                            {!! nl2br($summary, false) !!}
                                                                                                         </multiline>
                                                                                                     </td>
                                                                                                 </tr>
