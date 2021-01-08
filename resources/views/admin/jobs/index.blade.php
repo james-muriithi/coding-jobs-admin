@@ -85,7 +85,7 @@
                                 {{ $job->post_date ?? '' }}
                             </td>
                             <td>
-                                {{ $job->link ?? '' }}
+                                <a href="{{ $job->link ?? '#' }}" target="_blank" rel="noreferrer noopener" class="btn btn-sm btn-primary">View Job</a>
                             </td>
                             <td>
                                 {{ $job->twitter ?? '' }}

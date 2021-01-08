@@ -5,7 +5,7 @@ use App\Models\TwitterUser;
 use App\Models\TwitterUserJob;
 use Carbon\Carbon;
 
-function getNewUserJobs($user_id){
+function getNewUserJobs($user_id, $limit = 10){
     $twitterUser = TwitterUser::find($user_id);
     if(!$twitterUser){
         $twitterUser = TwitterUser::where('user_id_str', '=',$user_id)->firstOrFail();
@@ -15,5 +15,6 @@ function getNewUserJobs($user_id){
 
     return Job::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
         ->whereNotIn('id', $twitterUserJobs)
+        ->take($limit)
         ->get();
 }

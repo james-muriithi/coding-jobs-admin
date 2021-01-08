@@ -219,13 +219,6 @@
         .logo h1 {
             margin: 0;
         }
-
-        .logo a h1 {
-            color: #17bebb;
-            font-size: 24px;
-            font-weight: 700;
-            font-family: 'Work Sans', sans-serif;
-        }
     </style>
 </head>
 
@@ -242,7 +235,7 @@
                             <!-- Logo -->
                             <tr>
                                 <td bgcolor="#ffffff" class="p30-15 img-center logo" style="padding: 50px 30px 20px; border-radius: 0px 0px; font-size:0pt; line-height:0pt; text-align:center;width:100%;">
-                                    <a href="">
+                                    <a href="" rel="noreferrer noopener" style="color: #17bebb;font-size: 24px;font-weight: 700;font-family: 'Work Sans', sans-serif;">
                                         <h1>Coding Jobs</h1>
                                     </a>
                                 </td>
@@ -282,12 +275,16 @@
                                                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                                                 <tr>
                                                                                                     <td class="date" style="color:#000000; font-family:'Raleway', Arial,sans-serif; font-size:12px; line-height:16px; text-align:left; padding-bottom:6px;">
-                                                                                                        <multiline>Sept</multiline>
+                                                                                                        <multiline>
+                                                                                                            {{\Carbon\Carbon::parse($job->created_at)->monthName}}
+                                                                                                        </multiline>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td class="day" style="color:#1e52bd; font-family:'Raleway', Arial,sans-serif; font-size:40px; line-height:44px; text-align:left; font-weight:bold;">
-                                                                                                        <multiline>17</multiline>
+                                                                                                        <multiline>
+                                                                                                            {{\Carbon\Carbon::parse($job->created_at)->day}}
+                                                                                                        </multiline>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </table>
@@ -297,12 +294,16 @@
                                                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                                                 <tr>
                                                                                                     <td class="h5-black black" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:left; padding-bottom:15px; text-transform:uppercase; font-weight:bold; color:#000000;">
-                                                                                                        <multiline>Headline</multiline>
+                                                                                                        <multiline>
+                                                                                                            {{$job->title}}
+                                                                                                        </multiline>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td class="text black" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:22px; text-align:left; color:#000000;">
-                                                                                                        <multiline>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo dolore setr tempore alipsinung.</multiline>
+                                                                                                        <multiline>
+                                                                                                            {{$job->summary}}
+                                                                                                        </multiline>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </table>
@@ -315,7 +316,11 @@
                                                                                                         <table class="m-left" border="0" cellspacing="0" cellpadding="0">
                                                                                                             <tr>
                                                                                                                 <td class="text-button button-blue" style="font-family:'Kreon', Georgia, serif; font-size:14px; line-height:18px; text-align:center; padding:10px 30px; border-radius:20px; background:transparent; color:#1e52bd; border:1px solid #1e52bd;">
-                                                                                                                    <multiline><a href="#" target="_blank" class="link-blue" style="color:#1e52bd; text-decoration:none;"><span class="link-blue" style="color:#1e52bd; text-decoration:none;">View More</span></a></multiline>
+                                                                                                                    <multiline>
+                                                                                                                        <a rel="noreferrer noopener" href="{{$job->link}}" target="_blank" class="link-blue" style="color:#1e52bd; text-decoration:none;">
+                                                                                                                            <span class="link-blue" style="color:#1e52bd; text-decoration:none;">Visit</span>
+                                                                                                                        </a>
+                                                                                                                    </multiline>
                                                                                                                 </td>
                                                                                                             </tr>
 
@@ -355,7 +360,7 @@
                                                 <table class="center" border="0" cellspacing="0" cellpadding="0" style="text-align:center;">
                                                     <tr>
                                                         <td class="img" width="40" style="font-size:0pt; line-height:0pt; text-align:left;">
-                                                            <a href="https://twitter.com/coding_jobs_ke" target="_blank">
+                                                            <a rel="noreferrer noopener" href="https://twitter.com/coding_jobs_ke" target="_blank">
                                                                 <img src="https://img.icons8.com/nolan/64/twitter-circled.png" width="36" height="36" border="0" alt="" />
                                                             </a>
                                                         </td>

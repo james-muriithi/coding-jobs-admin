@@ -76,7 +76,7 @@
                             {{ trans('cruds.job.fields.link') }}
                         </th>
                         <td>
-                            {{ $job->link }}
+                            <a href="{{ $job->link ?? '#' }}" target="_blank" rel="noreferrer noopener" class="text-primary">{{ $job->link ?? '' }}</a>
                         </td>
                     </tr>
                     <tr>

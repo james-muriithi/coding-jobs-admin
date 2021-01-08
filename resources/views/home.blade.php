@@ -62,7 +62,11 @@
                                             @foreach($settings4['fields'] as $key => $value)
                                                 <td>
                                                     @if($value === '')
-                                                        {{ $entry->{$key} }}
+                                                        @if($key == 'link')
+                                                            <a href="{{ $entry->{$key} }}" target="_blank" rel="noreferrer noopener" class="btn btn-sm btn-primary">View Job</a>
+                                                        @else
+                                                            {{ $entry->{$key} }}
+                                                        @endif
                                                     @elseif(is_iterable($entry->{$key}))
                                                         @foreach($entry->{$key} as $subEentry)
                                                             <span class="label label-info">{{ $subEentry->{$value} }}</span>

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Mail\EmailDemo;
 use App\Models\TwitterUser;
+use App\Models\TwitterUserJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -48,6 +49,12 @@ class SendEmails extends Command
             $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
             if (count($newJobs) > 0){
                 Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
+                foreach ($newJobs as $newJob) {
+                    TwitterUserJob::create([
+                        'user_id' =>  $emailSubscribedUser['id'],
+                        'job_id' => $newJob['id'],
+                    ]);
+                }
             }else{
                 echo 'No new jobs for user '.$emailSubscribedUser['name'].PHP_EOL;
             }
