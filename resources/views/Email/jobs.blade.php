@@ -330,7 +330,7 @@
                                                                                                                 <td class="text-button button-blue" style="font-family:'Kreon', Georgia, serif; font-size:14px; line-height:18px; text-align:center; padding:10px 30px; border-radius:20px; background:transparent; color:#1e52bd; border:1px solid #1e52bd;">
                                                                                                                     <multiline>
                                                                                                                         <a rel="noreferrer noopener" href="{{$job->link}}" target="_blank" class="link-blue" style="color:#1e52bd; text-decoration:none;">
-                                                                                                                            <span class="link-blue" style="color:#1e52bd; text-decoration:none;">View <Job></Job></span>
+                                                                                                                            <span class="link-blue" style="color:#1e52bd; text-decoration:none;">View Job</span>
                                                                                                                         </a>
                                                                                                                     </multiline>
                                                                                                                 </td>
