@@ -25,7 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 //         $schedule->command('email:send')->twiceDaily(1,17);
-         $schedule->command('email:send')->hourly();
+         $schedule->command('email:send')
+             ->hourly()
+             ->appendOutputTo(storage_path('/logs/cron.txt'));
     }
 
     /**
