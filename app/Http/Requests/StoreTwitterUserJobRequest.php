@@ -24,8 +24,7 @@ class StoreTwitterUserJobRequest extends FormRequest
             ],
             'user_id' => [
                 'required',
-                'integer',
-                'exists:twitter_users,id',
+                'exists:twitter_users,id,user_id_str',
             ]
         ];
     }

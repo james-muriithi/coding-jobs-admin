@@ -171,6 +171,7 @@ return [
             'deleted_at_helper' => ' ',
             'job'               => 'Job',
             'job_helper'        => ' ',
+            'preference'        => 'Means'
         ],
     ],
 ];

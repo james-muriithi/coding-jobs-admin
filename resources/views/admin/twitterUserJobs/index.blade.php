@@ -27,6 +27,12 @@
                             {{ trans('cruds.twitterUserJob.fields.job') }}
                         </th>
                         <th>
+                            {{ trans('cruds.twitterUserJob.fields.preference') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.twitterUserJob.fields.created_at') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -48,6 +54,12 @@
                             </td>
                             <td>
                                 {{ $twitterUserJob->job->job_title ?? '' }}
+                            </td>
+                            <td>
+                                {{ strtoupper($twitterUserJob->user->preference) ?? '' }}
+                            </td>
+                            <td>
+                                {{ $twitterUserJob->created_at ?? '' }}
                             </td>
                             <td>
                                 @can('twitter_user_job_show')
@@ -123,7 +135,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

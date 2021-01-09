@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTwitterUserJobRequest;
 use App\Http\Resources\Admin\JobResource;
 use App\Http\Resources\Admin\TwitterUserJobResource;
+use App\Models\TwitterUser;
 use App\Models\TwitterUserJob;
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,13 @@ class TwitterUserJobApiController extends Controller
 
     public function store(StoreTwitterUserJobRequest $request)
     {
-        $twitterUserJob = TwitterUserJob::create($request->all());
+        $twitterUser = TwitterUser::find($request->get('user_id'));
+        if (!$twitterUser){
+            $twitterUser = TwitterUser::where('user_id_str', '=',$request->get('user_id'))->firstOrFail();
+        }
+        $userId = $twitterUser->id;
+
+        $twitterUserJob = TwitterUserJob::create(['user_id'=>$userId, 'job_id' => $request->all('job_id')]);
 
         $twitterUserJob->load(['user','job']);
 

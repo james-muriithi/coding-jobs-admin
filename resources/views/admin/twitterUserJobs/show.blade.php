@@ -39,6 +39,22 @@
                             {{ $twitterUserJob->job->job_title ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.twitterUserJob.fields.created_at') }}
+                        </th>
+                        <td>
+                            {{ $twitterUserJob->created_at ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.twitterUserJob.fields.preference') }}
+                        </th>
+                        <td>
+                            {{ strtoupper($twitterUserJob->user->preference) ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
