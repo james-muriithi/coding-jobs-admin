@@ -67,13 +67,13 @@ class SendEmails extends Command
             foreach ($emailSubscribedUsers as $emailSubscribedUser) {
                 $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
                 if (count($newJobs) > 0){
-                    Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
                     foreach ($newJobs as $newJob) {
                         TwitterUserJob::create([
                             'user_id' =>  $emailSubscribedUser['id'],
                             'job_id' => $newJob['id'],
                         ]);
                     }
+                    Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
                 }else{
                     echo 'No new jobs for user '.$emailSubscribedUser['name'].PHP_EOL;
                 }
