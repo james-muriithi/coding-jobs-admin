@@ -6,6 +6,7 @@ use App\Models\TwitterUserJob;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Rule;
 
 class StoreTwitterUserJobRequest extends FormRequest
 {
@@ -24,7 +25,6 @@ class StoreTwitterUserJobRequest extends FormRequest
             ],
             'user_id' => [
                 'required',
-                'exists:twitter_users,id,user_id_str',
             ]
         ];
     }

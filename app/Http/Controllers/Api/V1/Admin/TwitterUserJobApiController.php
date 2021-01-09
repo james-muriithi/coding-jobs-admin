@@ -35,7 +35,7 @@ class TwitterUserJobApiController extends Controller
         }
         $userId = $twitterUser->id;
 
-        $twitterUserJob = TwitterUserJob::create(['user_id'=>$userId, 'job_id' => $request->all('job_id')]);
+        $twitterUserJob = TwitterUserJob::create(['user_id'=>$userId, 'job_id' => $request->get('job_id')]);
 
         $twitterUserJob->load(['user','job']);
 
