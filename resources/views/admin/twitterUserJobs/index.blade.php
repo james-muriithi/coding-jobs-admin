@@ -18,10 +18,10 @@
                             {{ trans('cruds.twitterUserJob.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.twitterUserJob.fields.user') }}
+
                         </th>
                         <th>
-                            {{ trans('cruds.twitterUser.fields.profile_image_url') }}
+                            {{ trans('cruds.twitterUserJob.fields.user') }}
                         </th>
                         <th>
                             {{ trans('cruds.twitterUserJob.fields.job') }}
@@ -47,10 +47,12 @@
                                 {{ $twitterUserJob->id ?? '' }}
                             </td>
                             <td>
-                                {{ $twitterUserJob->user->name ?? '' }}
+                                @if($twitterUserJob->user->profile_image_url)
+                                    <img src="{{ $twitterUserJob->user->profile_image_url ?? '' }}" alt="" class="img-thumbnail rounded-circle">
+                                @endif
                             </td>
                             <td>
-                                {{ $twitterUserJob->user->profile_image_url ?? '' }}
+                                {{ $twitterUserJob->user->name ?? '' }}
                             </td>
                             <td>
                                 {{ $twitterUserJob->job->job_title ?? '' }}
