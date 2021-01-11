@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
 //         $schedule->command('email:send')->twiceDaily(1,17);
          $schedule->command('email:send')
-             ->twiceDaily(10, 17)
+             ->twiceDaily(11, 17)
              ->appendOutputTo(storage_path('/logs/cron.txt'));
     }
 
