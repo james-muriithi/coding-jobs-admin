@@ -53,12 +53,13 @@
                             </td>
                             <td>
                                 {{ $postedJob->job->job_title ?? '' }}
+                                - {{$postedJob->job->company ?? ''}}
                             </td>
                             <td>
                                 {{ $postedJob->platform ?? '' }}
                             </td>
                             <td>
-                                {{ $postedJob->link ?? '' }}
+                                <a href="{{ $postedJob->link ?? '#' }}" class="btn btn-sm btn-primary">Visit Post</a>
                             </td>
                             <td>
                                 {{ $postedJob->post_date ?? '' }}
