@@ -41,13 +41,13 @@
                             {{ trans('cruds.job.fields.post_date') }}
                         </th>
                         <th>
+                            {{ trans('cruds.job.fields.summary') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.job.fields.link') }}
                         </th>
                         <th>
                             {{ trans('cruds.job.fields.twitter') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.job.fields.summary') }}
                         </th>
                         <th>
                             {{ trans('cruds.job.fields.created_at') }}
