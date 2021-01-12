@@ -403,7 +403,8 @@
                             </tr>
                             <tr>
                                 <td class="text-footer2 p30-15" style="padding: 0px 15px 50px 15px; color:#8f9fd6; font-family:'Raleway', Arial,sans-serif; font-size:12px; line-height:22px; text-align:center;">
-                                    <multiline>Want to change how you receive these emails? <br />You can <a href="#" target="_blank" class="link-white" style="color:#1e52bd; text-decoration:none;"><span class="link-white" style="color:#1e52bd; text-decoration:none;">update your preferences</span></a> or <a href="#" target="_blank" class="link-white" style="color:#1e52bd; text-decoration:none;"><span class="link-white" style="color:#1e52bd; text-decoration:none;">unsubscribe</span></a> from this list.</multiline>
+                                    <multiline>Want to change how you receive these emails? <br />You can <a href="#" target="_blank" class="link-white" style="color:#1e52bd; text-decoration:none;"><span class="link-white" style="color:#1e52bd; text-decoration:none;">update your preferences</span></a> or
+                                        <a href="{{$user->user_id_str ? route('unsubscribe-get', $user->user_id_str) : '#'}}" target="_blank" class="link-white" style="color:#1e52bd; text-decoration:none;"><span class="link-white" style="color:#1e52bd; text-decoration:none;">unsubscribe</span></a> from this list.</multiline>
                                 </td>
                             </tr>
                         </table>

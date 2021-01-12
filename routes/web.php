@@ -52,3 +52,6 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+Route::get('unsubscribe/{user_id}', 'UnsubscribeController@index')->name('unsubscribe-get');
+Route::put('unsubscribe/', 'UnsubscribeController@update')->name('unsubscribe');

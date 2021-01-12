@@ -13,16 +13,18 @@ class EmailDemo extends Mailable
 
     protected $mailData;
     protected $subj;
+    protected $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData, $subject = "New Coding Jobs")
+    public function __construct($mailData, $user= null, $subject = "New Coding Jobs")
     {
         $this->mailData = $mailData;
         $this->subj = $subject;
+        $this->user = $user;
     }
 
     /**
@@ -34,6 +36,6 @@ class EmailDemo extends Mailable
     {
         return $this->subject($this->subj)
             ->view('Email.jobs')
-            ->with('jobs', $this->mailData);
+            ->with(['jobs' => $this->mailData, 'user' => $this->user]);
     }
 }

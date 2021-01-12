@@ -50,7 +50,7 @@ class SendEmails extends Command
 
             $newJobs = getNewUserJobs($emailSubscribedUser['user_id_str']);
             if (count($newJobs) > 0){
-                Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
+                Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs, $emailSubscribedUser));
                 $this->line(Carbon::now().' : Email Sent to '.$emailSubscribedUser['name']);
                 foreach ($newJobs as $newJob) {
                     TwitterUserJob::create([
@@ -75,7 +75,7 @@ class SendEmails extends Command
                             'job_id' => $newJob['id'],
                         ]);
                     }
-                    Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs));
+                    Mail::to($emailSubscribedUser['email'])->send(new EmailDemo($newJobs, $emailSubscribedUser));
                 }else{
                     $this->line(Carbon::now().' : No new jobs for user '.$emailSubscribedUser['name']);
                 }
