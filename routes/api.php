@@ -1,6 +1,9 @@
 <?php
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:api']], function () {
+
+    Route::put('unsubscribe/{user_id}', 'UnsubscribeController@update');
+
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
 
