@@ -38,10 +38,10 @@
                             {{ trans('cruds.job.fields.salary') }}
                         </th>
                         <th>
-                            {{ trans('cruds.job.fields.post_date') }}
+                            {{ trans('cruds.job.fields.summary') }}
                         </th>
                         <th>
-                            {{ trans('cruds.job.fields.summary') }}
+                            {{ trans('cruds.job.fields.post_date') }}
                         </th>
                         <th>
                             {{ trans('cruds.job.fields.link') }}
