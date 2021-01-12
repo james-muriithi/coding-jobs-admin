@@ -47,6 +47,9 @@
                             {{ trans('cruds.job.fields.twitter') }}
                         </th>
                         <th>
+                            {{ trans('cruds.job.fields.summary') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.job.fields.created_at') }}
                         </th>
                         <th>
@@ -74,6 +77,9 @@
                             </td>
                             <td>
                                 {{ $job->salary ?? '' }}
+                            </td>
+                            <td>
+                                {{ $job->summary ?? '' }}
                             </td>
                             <td>
                                 {{ $job->post_date ?? '' }}
