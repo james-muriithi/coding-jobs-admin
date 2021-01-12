@@ -188,7 +188,7 @@ class HomeController
             'aggregate_function'    => 'count',
             'filter_field'          => 'post_date',
             'group_by_field_format' => 'Y-m-d H:i:s',
-            'column_class'          => 'col-md-6',
+            'column_class'          => 'col-md-12',
             'entries_number'        => '5',
         ];
 
@@ -210,6 +210,22 @@ class HomeController
 
         $chart6 = new LaravelChart($settings6);
 
-        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4', 'chart5', 'chart6'));
+        $settings7 = [
+            'chart_title'           => 'This Month Jobs',
+            'chart_type'            => 'bar',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Job',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'group_by_field_format' => 'Y-m-d H:i:s',
+            'column_class'          => 'col-md-12',
+            'entries_number'        => '5',
+        ];
+
+        $chart7 = new LaravelChart($settings7);
+
+        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4', 'chart5', 'chart6', 'chart7'));
     }
 }

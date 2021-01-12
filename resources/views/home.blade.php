@@ -90,6 +90,10 @@
                             <h3>{!! $chart5->options['chart_title'] !!}</h3>
                             {!! $chart5->renderHtml() !!}
                         </div>
+                        <div class="{{ $chart7->options['column_class'] }}">
+                            <h3>{!! $chart7->options['chart_title'] !!}</h3>
+                            {!! $chart7->renderHtml() !!}
+                        </div>
                         <div class="{{ $chart6->options['column_class'] }}">
                             <h3>{!! $chart6->options['chart_title'] !!}</h3>
                             {!! $chart6->renderHtml() !!}
@@ -103,5 +107,5 @@
 @endsection
 @section('scripts')
 @parent
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>{!! $chart5->renderJs() !!}{!! $chart6->renderJs() !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>{!! $chart5->renderJs() !!}{!! $chart6->renderJs() !!}{!! $chart7->renderJs() !!}
 @endsection
