@@ -17,7 +17,7 @@ class JobController extends Controller
     {
         abort_if(Gate::denies('job_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobs = Job::all();
+        $jobs = Job::query()->latest()->paginate(250);
 
         return view('admin.jobs.index', compact('jobs'));
     }

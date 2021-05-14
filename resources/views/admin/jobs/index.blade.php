@@ -34,9 +34,9 @@
                         <th>
                             {{ trans('cruds.job.fields.location') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.job.fields.salary') }}
-                        </th>
+{{--                        <th>--}}
+{{--                            {{ trans('cruds.job.fields.salary') }}--}}
+{{--                        </th>--}}
                         <th>
                             {{ trans('cruds.job.fields.summary') }}
                         </th>
@@ -78,9 +78,9 @@
                             <td>
                                 {{ $job->salary ?? '' }}
                             </td>
-                            <td>
-                                {{ $job->summary ?? '' }}
-                            </td>
+{{--                            <td>--}}
+{{--                                {{ $job->summary ?? '' }}--}}
+{{--                            </td>--}}
                             <td>
                                 {{ $job->post_date ?? '' }}
                             </td>
